@@ -1,11 +1,11 @@
 package com.example.resteasy.rest;
 
-import org.springframework.stereotype.Service;
+import javax.inject.Named;
 
 /**
  * Created by Ron on 7-12-2015.
  */
-@Service
+@Named
 public class OneRepositoryMock implements OneRepository {
     @Override
     public SimpleObject getSimpleObject() {
