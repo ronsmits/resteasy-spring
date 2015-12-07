@@ -1,5 +1,6 @@
 package com.example.resteasy.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -15,9 +16,18 @@ import javax.ws.rs.core.Response;
 @Component
 public class SimpleResource {
 
+    @Autowired private OneRepository oneRepository;
+
     @GET @Produces(MediaType.APPLICATION_JSON)
     public Response getSimpleMessage(){
         SimpleObject simpleObject = new SimpleObject("voornaam", "achternaam");
         return Response.ok(simpleObject).build();
+    }
+
+    @GET
+    @Path("spring")
+    @Produces(MediaType.APPLICATION_XML)
+    public Response getSpringMessage(){
+        return Response.ok(oneRepository.getSimpleObject()).build();
     }
 }
